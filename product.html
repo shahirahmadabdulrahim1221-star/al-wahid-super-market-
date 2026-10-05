@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Al Wahid Hyper Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/loader.css" />
+</head>
+<body>
+
+  <header class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><div class="brand-logo">AW</div><div class="brand-text"><strong>Al Wahid</strong><span>Hyper Market</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Departments</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+        <a href="login.html" class="icon-btn"><i class="fa-regular fa-user"></i></a>
+        <button class="icon-btn" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: 120px;">
+    <div class="container">
+      <nav style="font-size:13px;color:var(--muted);margin-bottom:24px;">
+        <a href="index.html" style="color:var(--muted);">Home</a> /
+        <a href="categories.html" style="color:var(--muted);">Shop</a> /
+        <span style="color:var(--fg);">Product</span>
+      </nav>
+
+      <div id="productDetail"></div>
+
+      <!-- CHECKOUT SECTION -->
+      <section id="checkoutSection" style="display:none;margin-top:80px;padding-top:60px;border-top:1px solid var(--border);">
+        <h2 style="font-size:28px;margin-bottom:8px;" data-reveal>Complete Your Order</h2>
+        <p style="color:var(--muted);margin-bottom:32px;">Finish in 4 quick steps.</p>
+
+        <div class="checkout-progress">
+          <div class="checkout-progress-item active" data-step="1"><span class="num">1</span> Information</div>
+          <div class="checkout-progress-item" data-step="2"><span class="num">2</span> Delivery</div>
+          <div class="checkout-progress-item" data-step="3"><span class="num">3</span> Payment</div>
+          <div class="checkout-progress-item" data-step="4"><span class="num">4</span> Review</div>
+        </div>
+
+        <div class="checkout-wrap">
+          <div>
+            <div class="checkout-step active" id="step1">
+              <h3 style="font-size:20px;margin-bottom:20px;">Customer Information</h3>
+              <div class="form-row">
+                <div class="form-group"><label>Full Name</label><input type="text" id="custName" placeholder="Ahmad Karimi" /></div>
+                <div class="form-group"><label>Phone</label><input type="tel" id="custPhone" placeholder="+93 700 000 000" /></div>
+              </div>
+              <div class="form-group"><label>Email (optional)</label><input type="email" placeholder="you@example.com" /></div>
+              <div class="checkout-nav">
+                <a href="categories.html" class="btn-link">← Continue shopping</a>
+                <button class="btn btn-primary" onclick="nextStep(1)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <div class="checkout-step" id="step2">
+              <h3 style="font-size:20px;margin-bottom:20px;">Delivery Address</h3>
+              <div class="form-row">
+                <div class="form-group"><label>Province</label><select><option>Kabul</option><option>Herat</option><option>Balkh</option></select></div>
+                <div class="form-group"><label>District</label><input type="text" placeholder="District 4" /></div>
+              </div>
+              <div class="form-group"><label>Full Address</label><input type="text" id="custAddress" placeholder="Street, landmark, building..." /></div>
+              <div class="form-group"><label>Notes (optional)</label><textarea rows="3" placeholder="Floor, instructions..."></textarea></div>
+              <div class="checkout-nav">
+                <button class="btn-link" onclick="goStep(1)">← Back</button>
+                <button class="btn btn-primary" onclick="nextStep(2)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <div class="checkout-step" id="step3">
+              <h3 style="font-size:20px;margin-bottom:20px;">Payment Method</h3>
+              <label class="radio-card"><input type="radio" name="payment" value="cod" checked /><i class="fa-solid fa-money-bill-wave" style="color:var(--brand);font-size:20px;"></i><div class="rc-body"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div></label>
+              <label class="radio-card"><input type="radio" name="payment" value="card" /><i class="fa-solid fa-credit-card" style="color:var(--brand);font-size:20px;"></i><div class="rc-body"><strong>Debit / Credit Card</strong><span>Visa, Mastercard</span></div></label>
+              <label class="radio-card"><input type="radio" name="payment" value="mobile" /><i class="fa-solid fa-mobile-screen" style="color:var(--brand);font-size:20px;"></i><div class="rc-body"><strong>Mobile Money</strong><span>Roshan, MTN</span></div></label>
+              <div class="checkout-nav">
+                <button class="btn-link" onclick="goStep(2)">← Back</button>
+                <button class="btn btn-primary" onclick="nextStep(3)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <div class="checkout-step" id="step4">
+              <h3 style="font-size:20px;margin-bottom:20px;">Review</h3>
+              <div id="checkoutItems" style="margin-bottom:20px;"></div>
+              <div class="checkout-nav">
+                <button class="btn-link" onclick="goStep(3)">← Back</button>
+                <button class="btn btn-primary" onclick="placeOrder()"><i class="fa-solid fa-check"></i> Place Order</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="checkout-aside">
+            <h3>Order Summary</h3>
+            <div id="checkoutSummary"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section style="margin-top:80px;">
+        <div class="section-head"><div><span class="eyebrow">You may also like</span><h2 style="font-size:28px;" data-reveal>Related Products</h2></div></div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="margin-top:0;border-top:none;">
+      <span>© 2026 Al Wahid Hyper Market. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-head"><h2><i class="fa-solid fa-bag-shopping"></i> Your Cart</h2><button class="icon-btn" id="cartClose"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-foot" id="cartFoot"></div>
+  </aside>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/product.js"></script>
+  <script>
+    Loader.init();
+    Loader.attachLinks();
+    Cursor.init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departments — Al Wahid Hyper Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/loader.css" />
+</head>
+<body>
+
+  <header class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><div class="brand-logo">AW</div><div class="brand-text"><strong>Al Wahid</strong><span>Hyper Market</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="categories.html" class="active">Departments</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+        <a href="login.html" class="icon-btn"><i class="fa-regular fa-user"></i></a>
+        <button class="icon-btn" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+        <button class="icon-btn menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Ambient 3D scene behind heading -->
+  <section style="position:relative;padding-top:140px;padding-bottom:24px;overflow:hidden;">
+    <canvas id="ambientCanvas" data-scene="ambient" class="page-canvas" style="position:absolute;inset:0;opacity:.35;pointer-events:none;height:400px;"></canvas>
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="eyebrow" id="pageEyebrow">Explore</span>
+      <h1 id="pageTitle" style="font-size: clamp(30px,5vw,52px); margin: 8px 0 12px;" data-reveal>All Departments</h1>
+      <p style="color: var(--muted); max-width: 640px;" id="pageSubtitle">Every aisle of Al Wahid Hyper Market.</p>
+    </div>
+  </section>
+
+  <main style="position:relative;z-index:2;">
+    <div class="container">
+      <div class="dept-pills" id="deptPills"></div>
+      <div class="category-bar" id="categoryBar"></div>
+      <div class="shop-toolbar" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:24px 0;padding:16px 0;border-top:1px solid var(--border);">
+        <div id="resultCount" style="font-size:13px;color:var(--muted);"></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <label style="font-size:13px;color:var(--muted);">Sort</label>
+          <select id="sortSelect" style="padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:inherit;font-size:13px;">
+            <option value="popular">Most Popular</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="name">Name (A–Z)</option>
+          </select>
+        </div>
+      </div>
+      <div class="product-grid" id="shopGrid"></div>
+      <div class="shop-empty" id="shopEmpty" style="display:none;text-align:center;padding:80px 20px;border-radius:16px;border:1px dashed var(--border);background:var(--card);margin-top:20px;">
+        <i class="fa-solid fa-magnifying-glass" style="font-size:40px;color:var(--muted);opacity:.4;"></i>
+        <h3 style="margin:16px 0 6px;">No products found</h3>
+        <p style="font-size:13px;color:var(--muted);">Try a different department or category.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="margin-top:0;border-top:none;">
+      <span>© 2026 Al Wahid Hyper Market. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-head"><h2><i class="fa-solid fa-bag-shopping"></i> Your Cart</h2><button class="icon-btn" id="cartClose"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-foot" id="cartFoot"></div>
+  </aside>
+
+  <div class="search-overlay" id="searchOverlay">
+    <button class="icon-btn search-close" id="searchClose"><i class="fa-solid fa-xmark"></i></button>
+    <input type="text" id="searchInput" placeholder="Search products, brands..." />
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/product.js"></script>
+  <script>
+    Loader.init();
+    Loader.attachLinks();
+    Cursor.init();
+    document.addEventListener('DOMContentLoaded', () => Scene3D.init());
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Al Wahid Hyper Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/loader.css" />
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-item { display: flex; gap: 14px; margin-bottom: 24px; }
+    .contact-item i { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; background: var(--brand-light); color: var(--brand); flex-shrink: 0; }
+    @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><div class="brand-logo">AW</div><div class="brand-text"><strong>Al Wahid</strong><span>Hyper Market</span></div></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="categories.html">Departments</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="icon-btn"><i class="fa-regular fa-user"></i></a>
+        <button class="icon-btn" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <section style="position:relative;padding-top:140px;padding-bottom:80px;overflow:hidden;">
+    <canvas id="contactCanvas" data-scene="ambient" class="page-canvas" style="opacity:.35;pointer-events:none;height:400px;"></canvas>
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="eyebrow">Get in touch</span>
+      <h1 style="font-size: clamp(32px,5vw,56px); margin: 8px 0 12px;" data-reveal>Contact Us</h1>
+      <p style="color: var(--muted); max-width: 640px; margin-bottom: 40px;">Questions, feedback, or bulk orders? We'd love to hear from you.</p>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><strong>Visit our store</strong><p style="color:var(--muted);font-size:14px;">kart-4, Kabul, Afghanistan</p></div></div>
+          <div class="contact-item"><i class="fa-solid fa-phone"></i><div><strong>Call us</strong><p style="color:var(--muted);font-size:14px;">+93 702032951</p></div></div>
+          <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><strong>Email us</strong><p style="color:var(--muted);font-size:14px;">shahirahmadabdulrahim1221@gmail.com</p></div></div>
+          <div class="contact-item"><i class="fa-solid fa-clock"></i><div><strong>Opening hours</strong><p style="color:var(--muted);font-size:14px;">Daily · 8 AM – 11 PM</p></div></div>
+        </div>
+
+        <form onsubmit="event.preventDefault();" style="display:flex;flex-direction:column;gap:16px;">
+          <div class="form-group"><label>Your name</label><input type="text" required /></div>
+          <div class="form-group"><label>Your email</label><input type="email" required /></div>
+          <div class="form-group"><label>Phone</label><input type="tel" /></div>
+          <div class="form-group"><label>Message</label><textarea rows="5" required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="margin-top:0;border-top:none;">
+      <span>© 2026 Al Wahid Hyper Market. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/product.js"></script>
+  <script>
+    Loader.init();
+    Loader.attachLinks();
+    Cursor.init();
+    document.addEventListener('DOMContentLoaded', () => {
+      Scene3D.createSupermarketScene('contactCanvas', { mode: 'ambient' });
+    });
+  </script>
+</body>
+</html>
